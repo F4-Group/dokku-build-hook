@@ -8,7 +8,7 @@ if [ -f "hooks/pre-build" ]; then
         echo " !     Adding missing execution permission. Please change the permission on your codebase." 1>&2
         chmod +x hooks/pre-build
     fi
-     echo "=====> Running pre-build script"
-     hooks/pre-build
-     echo "=====> End of pre-build script"
+    echo "=====> Running pre-build script"
+    hooks/pre-build
+    echo "=====> End of pre-build script"
 fi
