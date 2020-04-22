@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
-source "$PLUGIN_CORE_AVAILABLE_PATH/common/functions"
 
 APP="$1";
-dokku_log_info1 "Checking for pre-build script"
+echo "-----> Checking for pre-build script"
 if [ -f "hooks/pre-build" ]; then
     if [ ! -x "hooks/pre-build" ]; then
-        dokku_log_warn "Adding missing execution permission. Please change the permission on your codebase."
+        echo " !     Adding missing execution permission. Please change the permission on your codebase." 1>&2
         chmod +x hooks/pre-build
     fi
-     dokku_log_info2 "Running pre-build script"
+     echo "=====> Running pre-build script"
      hooks/pre-build
-     dokku_log_info2 "End of pre-build script"
+     echo "=====> End of pre-build script"
 fi
